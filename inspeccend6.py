@@ -2755,7 +2755,7 @@ def button_exe3():
  # -----------------------------------------------------------------------   
 
     f_tcv22=0
-    f_tcv22=round(float((int(our)/65/sqrt(0.3))),1)
+    f_tcv22=round(float((int(our)/40/sqrt(0.3))),1)
     e.delete(0,END)
     e.insert(0 , str("kV값(TCV)"))
     # e.insert(our,"("+checked1.get()+")")
