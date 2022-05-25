@@ -258,6 +258,7 @@ class ssb_db3:
         self.view()
 
 
+
 db1 = ssb_db1() 
 db2 = ssb_db2()
 db3 = ssb_db3()
@@ -493,12 +494,10 @@ def our_new():
     # root2=Tk()
     pass
 
-#==============================================================================================================
-
 def our_lmtd():
     
     root2=Tk()
-    root2.geometry('%dx%d+%d+%d' % (280, 500,780,260))
+    root2.geometry('%dx%d+%d+%d' % (280, 500,790,260))
     root2.title('HX 대수평균온도차')
     def hotinn():
         global eex1
@@ -591,12 +590,11 @@ def our_lmtd():
             current = e2.get()
             e2.delete(0, END)
             e2.insert(0, str(current) + str(number)) 
-
-    e2 = Entry(root2, width=41,font= ("NanumGothicBold","9"), borderwidth=14, justify='right')
+      
+    e2 = Entry(root2, width=31, font= ("Calibri,350"), borderwidth=14, justify='right')
     e2.grid(row=0, column=0, columnspan=3)
     root2.mainloop()
-#------------------------------------------------------------------------------------------------===================================================
-
+#------------------------------------------------------------------------------------------------\
 #==============================================================================================================
 
 def our_dpv():
@@ -640,6 +638,7 @@ def our_dpv():
         eex12=1
         cvcvcv=1.167*((int(nanbang2)/int(afctt))/sqrt(int(yangjung)/30))*0.8
       
+
 
         if cvcvcv > pdd4[0]:
             valve3="250 A"
@@ -782,6 +781,8 @@ def our_dpv():
     myLabeld6.grid(row=12,column=0)
 
 
+
+
     answer22=Entry(root22,width=10,justify='center')
     answer22.grid(row=10,column=1)
 
@@ -812,6 +813,8 @@ def our_dpv():
     e22.grid(row=0, column=0, columnspan=3)
     root22.mainloop()
 
+
+#------------------------------------------------------------------------------------------------===================================================
 #------------------------------------------------------------------------------------------------===================================================
 def ourour_cal():
 
@@ -886,7 +889,14 @@ def ourour_cal():
 
 
 
+
+
 #----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 def simple():
     import PySimpleGUI as sg
@@ -1493,7 +1503,7 @@ edit_menu=Menu(my_menu)
 my_menu.add_cascade(label="Edit",menu=edit_menu)
 edit_menu.add_command(label="안양 사용자(uuser.db)",command=our_copy)
 edit_menu.add_command(label="대수평균온도차",command=our_lmtd)
-edit_menu.add_command(label="난방DPV 관경결정",command=our_dpv)
+edit_menu.add_command(label="난방 DPV_관경선정",command=our_dpv)
 edit_menu.add_command(label="냉동기 USRT",command=simple)
 edit_menu.add_command(label="계산기(나열식)",command=ourour_cal)
 edit_menu.add_command(label="연결열부하 DB",command=lambda : view_command1(1))
@@ -2212,7 +2222,7 @@ def button_exe2():
     elif int(our) > pd7[13]:
         init2="15 A"
         init2per=float(((int(our)-pd7[13])/(pd7[12]-pd7[13]))*100)
-    f_tcv1 = round(((int(our)/65/sqrt(0.3))*1.167),3)
+    f_tcv1 = round(((int(our)/pdddd/sqrt(0.3))*1.167),3)
     e.delete(0,END)
     e.insert(0 , str("난방1차 관경"))
     e.insert(our, str("→ "))
@@ -2430,7 +2440,7 @@ def button_exe2():
  # -----------------------------------------------------------------------   
 
     f_tcv11=0
-    f_tcv11=round(float((int(our)/65/sqrt(0.3))),1)
+    f_tcv11=round(float((int(our)/pdddd/sqrt(0.3))),1)
     e.delete(0,END)
     e.insert(0 , str("kV값(TCV)"))
     # e.insert(our,"("+checked1.get()+")")
@@ -2931,18 +2941,22 @@ def selected2(event):
     global pd7
     global pd8
     global pdd99
+    global pdddd
     if checked7.get() =="복사":
         pd7=[28195,15686,7580,4803,2726,1353,854,447,232,157,77,42,19,1]
         pd8=0.01678
         pdd99=15
+        pdddd=65
     if checked7.get() =="대류":
         pd7=[26026,14479,6996,4433,2526,1249,788,413,214,144.7,71.1,38.4,17.1,1]
         pd8=0.02243*2/3
         pdd99=20
+        pdddd=60
     if checked7.get() =="대류△10℃":
         pd7=[26026,14479,6996,4433,2526,1249,788,413,214,144.7,71.1,38.4,17.1,1]
         pd8=0.01421*2/3
         pdd99=10
+        pdddd=60
 
 
 
@@ -2950,6 +2964,7 @@ option7 = ["복사","대류","대류△10℃"]
 pd7=[28195,15686,7580,4803,2726,1353,854,447,232,157,77,42,19,1]
 pd8=0.01678
 pdd99 = 15
+pdddd = 65
 checked7=StringVar()
 checked7.set(option7[0])
 drop7 = OptionMenu(root, checked7, *option7, command = selected2)
@@ -3001,14 +3016,14 @@ def selected4(event):
     if checked2.get() == "급탕1단" :
         pd2=[32500,16250,9750,6500,4550,2925,1625,975,650,390,228,98] 
     if checked2.get() == "급1대류" :
-        pd2=[30000,15000,9000,6000,4200,2700,1500,900,600,210,90]    
+        pd2=[30000,15000,9000,6000,4200,2700,1500,900,600,360,210,90]    
     if checked2.get() == "급탕2단" :
         pd2=[37500,18750,11250,7500,5250,3375,1875,1125,750,450,263,113]  
     if checked2.get() =="급2대류":
         pd2=[35000,17500,10500,7000,4900,3150,1750,1050,700,420,245,105]
 checked2=StringVar()
 option2 = ["급탕2단","급탕1단","급2대류","급1대류"]
-pd2=[37500,18750,11250,7500,5250,3375,1875,1125,750,450,263,113] #연결열부하값으로 열량계 결정(급탕2단여부에 따라 다름 동일연결열부하값이라면 일반이 쬐금 더 큰 열량계 관경인듯 )
+pd2=[37500,18750,11250,7500,5250,3375,1875,1125,750,450,263,113] #연결열부하값으로 열량계 결정(급탕2단여부에 따라 다름 동일연결열부하값이라면 일반이 쬐근 더 큰 열량계 관경인듯 )
 
 checked2=StringVar()
 checked2.set(option2[0])
@@ -3141,7 +3156,6 @@ drop6.config(width=7,font= ("NanumGothicBold","9"),cursor="plus",bg="#F5F6CE",bo
 drop6.grid(row=11,column=1)
 myLabe6 = Label(root,width=10, text="2차재질 →").grid(row=11,column=0)
 
-
 pre1=Entry(root,width=11 )
 pre1.grid(row=13,column=0)
 pre2=Entry(root,width=11 )
@@ -3156,6 +3170,7 @@ pre4.grid(row=13,column=4,sticky=W)
 pre6=Label(root,text="(비고→)").grid(row=12,column=2,sticky=E)
 pre5=Entry(root,width=10,justify="left")
 pre5.grid(row=12,column=4,sticky=W)
+
 
 
 def preheat(heat):
